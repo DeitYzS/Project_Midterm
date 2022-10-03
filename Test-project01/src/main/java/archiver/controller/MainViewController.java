@@ -123,7 +123,6 @@ public class MainViewController {
                             alert.showAndWait();
                         }
 
-
             password.clear();
             Repassword.clear();
             authenticationPane.setVisible(false);
