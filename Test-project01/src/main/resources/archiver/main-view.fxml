@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="archiver.controller.MainViewController">
+   <children>
+      <MenuBar prefHeight="26.0" prefWidth="456.0">
+         <menus>
+            <Menu id="menuFile" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="Close" mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane fx:id="mainPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="535.0" prefWidth="455.0">
+         <children>
+            <Label layoutX="184.0" layoutY="14.0" text="Drop file below">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Pane layoutX="82.0" layoutY="277.0" prefHeight="36.0" prefWidth="292.0">
+               <children>
+                  <Button fx:id="rarButton" layoutX="107.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="81.0" style="-fx-background-color: #dcedc1; -fx-border-color: white; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="RAR" />
+                  <Button fx:id="tarButton" layoutX="208.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="81.0" style="-fx-background-color: #ffd3b6; -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="TAR" />
+                  <Button fx:id="zipButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="81.0" style="-fx-border-color: white; -fx-background-color: #a8e6cf; -fx-border-radius: 10px; -fx-background-radius: 10px;" text=" ZIP" />
+               </children>
+            </Pane>
+            <Pane layoutX="45.0" layoutY="341.0" prefHeight="200.0" prefWidth="365.0">
+               <children>
+                  <Button fx:id="startButton" layoutX="33.0" layoutY="37.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-border-color: white; -fx-background-color: #daffe7;" text="Start" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="extractButton" layoutX="33.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #eafff2; -fx-border-color: white;" text="Extract">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="clearButton" layoutX="33.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #ffbaba; -fx-border-color: white; -fx-font-style: bold;" text="Clear">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+               </children>
+            </Pane>
+            <Label layoutX="13.0" layoutY="332.0" text="Enter File Name :" />
+            <ListView fx:id="inputListView" layoutX="27.0" layoutY="40.0" prefHeight="224.0" prefWidth="401.0" />
+            <TextField fx:id="inputFileName" layoutX="126.0" layoutY="326.0" prefHeight="28.0" prefWidth="307.0" style="-fx-border-color: gray;" />
+            <Rectangle fx:id="overlay" arcHeight="5.0" arcWidth="5.0" height="541.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.65;" visible="false" width="456.0" />
+            <Pane fx:id="authenticationPane" layoutX="45.0" layoutY="187.0" prefHeight="200.0" prefWidth="365.0" style="-fx-background-color: #ffe3d0; -fx-border-radius: 20; -fx-border-color: white; -fx-background-radius: 20;" visible="false">
+               <children>
+                  <Label layoutX="60.0" layoutY="50.0" text="Password :" />
+                  <Label layoutX="15.0" layoutY="90.0" text="Repeat Password :" />
+                  <TextField fx:id="password" layoutX="145.0" layoutY="45.0" prefHeight="30.0" prefWidth="185.0" />
+                  <TextField fx:id="Repassword" layoutX="145" layoutY="90" prefHeight="30.0" prefWidth="185.0" />
+                  <Button fx:id="submitButton" layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Submit" />
+                  <Button fx:id="cancelButton" layoutX="200.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Cancel" />
+                  <Label layoutX="140.0" layoutY="14.0" text="Verification" />
+               </children>
+            </Pane>
+            <Pane fx:id="verificationPane" prefHeight="200.0" prefWidth="365.0" style="-fx-background-color: #ffe3d0; -fx-border-color: white; -fx-border-radius: 20; -fx-background-radius: 20;" visible="false">
+               <children>
+                  <Label layoutX="30.0" layoutY="75.0" text="Password :" />
+                  <TextField fx:id="password1" layoutX="120.0" layoutY="70.0" prefHeight="30.0" prefWidth="185.0" />
+                  <Button fx:id="submitButton1" layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Submit" />
+                  <Button fx:id="cancelButton1" layoutX="200.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Cancel" />
+                  <Label layoutX="140.0" layoutY="14.0" text="Verification" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</FlowPane>
