@@ -94,7 +94,7 @@ public class MainViewController {
 
 
                         if (!files.isEmpty()) {
-                            if (password.getText().length() > 2) {
+                            if (password.getText().length() >= 2) {
                                 if (password.getText().equals(Repassword.getText())) {
                                     ZipParameters zipParameters = new ZipParameters();
                                     zipParameters.setEncryptFiles(true);
