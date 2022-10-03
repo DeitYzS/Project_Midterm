@@ -92,28 +92,27 @@ public class MainViewController {
                     DirectoryChooser dc = new DirectoryChooser();
                     File destFile = dc.showDialog(new Stage());
 
-                        if (password.getText().isEmpty() && Repassword.getText().isEmpty()) {
-                                fileZip t1 = new fileZip(destFile.getAbsoluteFile(), inputFileName.getText(), isLast(isSelected), password.getText().toCharArray(), files);
-                                t1.fileCompress();
-                        }
 
                         if (!files.isEmpty()) {
                             if (password.getText().length() > 2) {
                                 if (password.getText().equals(Repassword.getText())) {
-                                        ZipParameters zipParameters = new ZipParameters();
-                                        zipParameters.setEncryptFiles(true);
-                                        zipParameters.setEncryptionMethod(EncryptionMethod.AES);
-                                        zipParameters.setAesKeyStrength(AesKeyStrength.KEY_STRENGTH_256);
+                                    ZipParameters zipParameters = new ZipParameters();
+                                    zipParameters.setEncryptFiles(true);
+                                    zipParameters.setEncryptionMethod(EncryptionMethod.AES);
+                                    zipParameters.setAesKeyStrength(AesKeyStrength.KEY_STRENGTH_256);
 
-                                    fileZip t1 = new fileZip(destFile.getAbsoluteFile(), inputFileName.getText(), isLast(isSelected), password.getText().toCharArray(), files);
-                                    t1.fileCompress();
+                                    fileZip t2 = new fileZip(destFile.getAbsoluteFile(), inputFileName.getText(), isLast(isSelected), password.getText().toCharArray(), files);
+                                    t2.fileCompress();
 
                                 } else {
                                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                     alert.setContentText("Password do not matching");
                                     alert.showAndWait();
                                 }
-                            } else {
+                            } else if (password.getText().equals("") && Repassword.getText().equals("")) {
+                                fileZip t1 = new fileZip(destFile.getAbsoluteFile(), inputFileName.getText(), isLast(isSelected), files);
+                                t1.fileCompressWithoutPassword();
+                            }else {
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setContentText("The password should be more.");
                                 alert.showAndWait();
@@ -123,6 +122,7 @@ public class MainViewController {
                             alert.setContentText("File Not Found!!");
                             alert.showAndWait();
                         }
+
 
             password.clear();
             Repassword.clear();
@@ -141,8 +141,6 @@ public class MainViewController {
                              .filter(file -> file.getAbsolutePath().endsWith("tar"));
 
 
-
-
                      for (int i=0; i<files.size();i++) {
                          try {
                              if (new ZipFile(files.get(i).getAbsolutePath()).isEncrypted()) {
@@ -155,6 +153,10 @@ public class MainViewController {
 
                                  if (popupPassword.isPresent()){
                                      pass.put(files.get(i), popupPassword.get());
+                                 } else {
+                                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                     alert.setContentText("File Not Found!!");
+                                     alert.showAndWait();
                                  }
                              }
                          } catch (Exception e) {

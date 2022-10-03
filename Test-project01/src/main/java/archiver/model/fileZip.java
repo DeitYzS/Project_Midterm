@@ -22,6 +22,14 @@ public class fileZip {
         this.files = files;
     }
 
+    public fileZip(File destFile, String inputFileName, String isLast, List<File> files) {
+        this.destFile = destFile;
+        this.inputFileName = inputFileName;
+        this.isLast = isLast;
+        this.password = password;
+        this.files = files;
+    }
+
     public void fileCompress() {
         ZipParameters zipParameters = new ZipParameters();
         zipParameters.setEncryptFiles(true);
@@ -39,5 +47,16 @@ public class fileZip {
         });
     }
 
+    public void fileCompressWithoutPassword() {
+        files.forEach(file -> {
+            try {
+                ZipFile zipFile = new ZipFile(destFile.getAbsolutePath() + "\\" + inputFileName + isLast, password);
+                System.out.println(file.getAbsolutePath());
+                zipFile.addFile(new File(file.getAbsolutePath()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
 }
