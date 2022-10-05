@@ -39,10 +39,9 @@ public class fileZip {
         files.forEach(file -> {
             try {
                 ZipFile zipFile = new ZipFile(destFile.getAbsolutePath() + "\\" + inputFileName + isLast, password);
-                System.out.println(file.getAbsolutePath());
                 zipFile.addFile(new File(file.getAbsolutePath()), zipParameters);
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
         });
     }
@@ -51,7 +50,6 @@ public class fileZip {
         files.forEach(file -> {
             try {
                 ZipFile zipFile = new ZipFile(destFile.getAbsolutePath() + "\\" + inputFileName + isLast, password);
-                System.out.println(file.getAbsolutePath());
                 zipFile.addFile(new File(file.getAbsolutePath()));
             } catch (Exception e) {
                 e.printStackTrace();

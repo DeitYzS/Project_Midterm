@@ -1,8 +1,12 @@
 package archiver.controller;
 
+import archiver.Launcher;
 import archiver.model.fileZip;
 import archiver.model.threadFile;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Dragboard;
@@ -92,7 +96,6 @@ public class MainViewController {
                     DirectoryChooser dc = new DirectoryChooser();
                     File destFile = dc.showDialog(new Stage());
 
-
                         if (!files.isEmpty()) {
                             if (password.getText().length() >= 2) {
                                 if (password.getText().equals(Repassword.getText())) {
@@ -133,7 +136,7 @@ public class MainViewController {
             DirectoryChooser dc = new DirectoryChooser();
             File destfile = dc.showDialog(new Stage());
             password1.clear();
-            //Stream
+
                      files.stream()
                              .filter(file -> file.getAbsolutePath().endsWith("rar"))
                              .filter(file -> file.getAbsolutePath().endsWith("zip"))
@@ -153,13 +156,15 @@ public class MainViewController {
                                  if (popupPassword.isPresent()){
                                      pass.put(files.get(i), popupPassword.get());
                                  } else {
-                                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                     Alert alert = new Alert(Alert.AlertType.WARNING);
                                      alert.setContentText("File Not Found!!");
                                      alert.showAndWait();
                                  }
                              }
                          } catch (Exception e) {
-                             e.printStackTrace();
+                             Alert alert = new Alert(Alert.AlertType.WARNING);
+                             alert.setContentText("Zip File Not Found!!");
+                             alert.showAndWait();
                          }
                      }
 

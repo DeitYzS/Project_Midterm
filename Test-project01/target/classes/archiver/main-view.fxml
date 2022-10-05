@@ -24,7 +24,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane fx:id="mainPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="535.0" prefWidth="455.0"  style="-fx-background-image: url('D:\1st Sememter\\1.jpg');">
+      <AnchorPane fx:id="mainPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="535.0" prefWidth="455.0" >
          <children>
             <Label layoutX="184.0" layoutY="14.0" text="Drop file below">
                <font>
